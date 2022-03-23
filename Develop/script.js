@@ -3,26 +3,44 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input 
 function writePassword() {
-// prompt to select password criteria, on click of generate button
-// store user input in variables
-// select Length between 8 and 128 string into integer
-var userLength = prompt("Please choose a password length between 8 and 128.");
-// prompt choice  lowercase boolean
-var userLowercase= prompt("Do you want your password to include lowercase letters? Y/N");
-// prompt choice upper case boolean
-var userUppercase= prompt("Do you want your password to include UPPERCASE letters? Y/N");
-// prompt choice numeric boolean
-var userNumbers= prompt("Do you want your password to include numbers? Y/N");
-// prompt choice special characters boolean
-var userCharacters= prompt ("Do you want your password to include special characters? Y/N");
 
-// user input different than expected - use conditionals
+// prompt to select password criteria, on click of generate button
+
+var userLength = prompt("Please choose a password length between 8 and 128.");//store user password length as variable
 if (userLength<8||userLength>128){
   alert("You must enter a password of at least 8 characters and less than 128 characters.");
 return null;
+}// if user returns something other than specified range
+
+// select length between 8 and 128 string into integer
+
+var userLowercase= prompt("Do you want your password to include lowercase letters? YES/N0").toUpperCase;// store user lowercase letters selection as a variable
+if(!userLowercase=="YES"||!userLowercase=="NO"){
+  alert("You must enter YES or NO.");//in case the user returns anything besides yes or no
+  return null;
 }
 
-if (!userLowercase)
+// prompt choice upper case
+var userUppercase= prompt("Do you want your password to include UPPERCASE letters? Y/N");// prompt choice upper case
+if(!userUppercase=="YES"||!userUppercase=="NO"){
+  alert("You must enter YES or NO.");//in case the user returns anything besides yes or no
+  return null;
+}
+
+
+// prompt choice numeric boolean
+var userNumbers= prompt("Do you want your password to include numbers? Y/N");
+if(!userNumbers=="YES"||!userNumbers=="NO"){
+  alert("You must enter YES or NO.");//in case the user returns anything besides yes or no
+  return null;
+}
+
+// prompt choice special characters boolean
+var userCharacters= prompt ("Do you want your password to include special characters? Y/N");
+if(!userCharacters=="YES"||!userCharacters=="NO"){
+  alert("You must enter YES or NO.");//in case the user returns anything besides yes or no
+  return null;
+}
 
   generatePassword()
   var password = generatePassword();
