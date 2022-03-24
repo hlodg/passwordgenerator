@@ -77,16 +77,31 @@ function generatePassword() {
 
   var password = "";
   var i=0;
+  var l = selectedCharTypes.length-1;
   while(i<userLengthInt) {
-    var charType = math.floor(math.random()*(3-0)+0);
+    var charType_I = math.floor(math.random()*(l-0)+0);
+    var charType = selectedCharTypes[charType_I];
     var randomChar = "";
     // lowerCase
-    if(charType==0) {
-      
+    if(charType=="lower") {
+      var randomNum = math.floor(math.random()*(25-0)+0);
+      randomChar = lowerChars[randomNum];
+    } else if(charType=="upper") {
+      var randomNum = math.floor(math.random()*(25-0)+0);
+      randomChar = upperChars[randomNum];
+    } else if(charType=="number") {
+      var randomNum = math.floor(math.random()*(8-0)+0);
+      randomChar = nums[randomNum];
+    } else if(charType=="special") {
+      var randomNum = math.floor(math.random()*(25-0)+0);
+      randomChar = specialChars[randomNum];
     }
+
+    password.concat(randomChar);
+    
     i++;
   }
-  var randomCarType= math.
+  return password;
 }
 
 // Write password to the #password input 
@@ -101,32 +116,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-// condition user did not input anything
-
-//create arrays for types of characters possible
-
-// create dialogue "You selected...."
-// password is generated
-// the password is either displayed in an alert or written to the page
-  
-//use randomizer function to generate characters
-
-//create generatePassword ()- Take values above and generate a password
-
-function generatePassword(){
-  return "Password";
-}
-
-// create an empty array that represents final password
-
-// join arrays together based on user input
-
-// randomizer function - characters from the joined arrays
-
-// pushes one character from each of selected arrays into final password array 
-
-// transform array into string 
-// array.join()
 
