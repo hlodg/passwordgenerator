@@ -15,7 +15,7 @@ function generatePassword() {
 
   var selectedCharTypes = []
 
-  var userLowercase= prompt("Do you want your password to include lowercase letters? YES/N0").toUpperCase;// store user lowercase letters selection as a variable
+  var userLowercase= prompt("Do you want your password to include lowercase letters? YES/N0").toUpperCase();// store user lowercase letters selection as a variable
   if(!userLowercase=="YES"||!userLowercase=="NO"){
     alert("You must enter YES or NO.");//in case the user returns anything besides yes or no
     return null;
@@ -26,19 +26,19 @@ function generatePassword() {
   }
 
   // prompt choice upper case
-  var userUppercase= prompt("Do you want your password to include UPPERCASE letters? Y/N");// prompt choice upper case
+  var userUppercase= prompt("Do you want your password to include UPPERCASE letters? YES/NO").toUpperCase();// prompt choice upper case
   if(!userUppercase=="YES"||!userUppercase=="NO"){
     alert("You must enter YES or NO.");//in case the user returns anything besides yes or no
     return null;
   }
 
-  if (userUppecase=="YES") {
+  if (userUppercase=="YES") {
     selectedCharTypes.push("upper");
   }
 
 
   // prompt choice numeric boolean
-  var userNumbers= prompt("Do you want your password to include numbers? Y/N");
+  var userNumbers= prompt("Do you want your password to include numbers? YES/NO").toUpperCase();
   if(!userNumbers=="YES"||!userNumbers=="NO"){
     alert("You must enter YES or NO.");//in case the user returns anything besides yes or no
     return null;
@@ -49,7 +49,7 @@ function generatePassword() {
   }
 
   // prompt choice special characters boolean
-  var userSpecialChars= prompt ("Do you want your password to include special characters? YES/NO");
+  var userSpecialChars= prompt ("Do you want your password to include special characters? YES/NO").toUpperCase();
   if(!userSpecialChars=="YES"||!userSpecialChars=="NO"){
     alert("You must enter YES or NO.");//in case the user returns anything besides yes or no
     return null;
@@ -79,25 +79,25 @@ function generatePassword() {
   var i=0;
   var l = selectedCharTypes.length-1;
   while(i<userLengthInt) {
-    var charType_I = math.floor(math.random()*(l-0)+0);
+    var charType_I = Math.floor(Math.random()*(l-0)+0.5);
     var charType = selectedCharTypes[charType_I];
     var randomChar = "";
     // lowerCase
     if(charType=="lower") {
-      var randomNum = math.floor(math.random()*(25-0)+0);
+      var randomNum = Math.floor(Math.random()*(25-0)+0);
       randomChar = lowerChars[randomNum];
     } else if(charType=="upper") {
-      var randomNum = math.floor(math.random()*(25-0)+0);
+      var randomNum = Math.floor(Math.random()*(25-0)+0);
       randomChar = upperChars[randomNum];
     } else if(charType=="number") {
-      var randomNum = math.floor(math.random()*(8-0)+0);
+      var randomNum = Math.floor(Math.random()*(8-0)+0);
       randomChar = nums[randomNum];
     } else if(charType=="special") {
-      var randomNum = math.floor(math.random()*(25-0)+0);
+      var randomNum = Math.floor(Math.random()*(25-0)+0);
       randomChar = specialChars[randomNum];
     }
 
-    password.concat(randomChar);
+    password+=randomChar;
     
     i++;
   }
