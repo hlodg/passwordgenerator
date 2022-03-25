@@ -1,4 +1,4 @@
-// Assignment Code
+// Assigns the generateBTN Code
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
@@ -13,7 +13,7 @@ function generatePassword() {
   // select length between 8 and 128 string into integer
   userLengthInt=parseInt(userLength);
 
-  var selectedCharTypes = []
+  var selectedCharTypes = []//creates empty variable which we will fill as user selects types of characters
 
   var userLowercase= prompt("Do you want your password to include lowercase letters? YES/N0").toUpperCase();// store user lowercase letters selection as a variable
   if(!userLowercase=="YES"||!userLowercase=="NO"){
@@ -22,7 +22,7 @@ function generatePassword() {
   }
 
   if (userLowercase=="YES") {
-    selectedCharTypes.push("lower");
+    selectedCharTypes.push("lower");//adds lower case characters to types of characters
   }
 
   // prompt choice upper case
@@ -33,7 +33,7 @@ function generatePassword() {
   }
 
   if (userUppercase=="YES") {
-    selectedCharTypes.push("upper");
+    selectedCharTypes.push("upper");//adds upper case to charTypes variable
   }
 
 
@@ -61,7 +61,7 @@ function generatePassword() {
 
   if (selectedCharTypes.length == 0) {
     alert("No character types selected. Please say yes to at least one type.");
-    return null;
+    return null;// If the user chooses not to enter anything, then we have to start over.
   }
 
   // Generate password
@@ -75,13 +75,14 @@ function generatePassword() {
 
   var specialChars = ["!","@","#","$","%","^","&","*"];
 
-  var password = "";
-  var i=0;
-  var l = selectedCharTypes.length-1;
+  var password = ""; //creates the password to fill with the characters
+
+  var i=0;//starts the function counting at 0 so that it initializes
+  var l = selectedCharTypes.length-1;// the number of char types creates the variable to randomize the type of character in each position of your password
   while(i<userLengthInt) {
-    var charType_I = Math.floor(Math.random()*(l-0)+0.5);
-    var charType = selectedCharTypes[charType_I];
-    var randomChar = "";
+    var charTypeInt = Math.floor(Math.random()*(l-0)+0.5);//runs random variable to choose character type
+    var charType = selectedCharTypes[charTypeInt];// creates new array of combining these to be object relationship
+    var randomChar = "";//creates empty variable we will fill with the characters
     // lowerCase
     if(charType=="lower") {
       var randomNum = Math.floor(Math.random()*(25-0)+0);
@@ -94,14 +95,14 @@ function generatePassword() {
       randomChar = nums[randomNum];
     } else if(charType=="special") {
       var randomNum = Math.floor(Math.random()*(25-0)+0);
-      randomChar = specialChars[randomNum];
+      randomChar = specialChars[randomNum];//create the functions in order to choose a random character from the arrays above
     }
 
-    password+=randomChar;
+    password+=randomChar;// plus equal means to combine password and the random characters chosen (concatination)
     
-    i++;
+    i++;//finishes the while loop
   }
-  return password;
+  return password;// returns the password so that you can put it in the text box
 }
 
 // Write password to the #password input 
