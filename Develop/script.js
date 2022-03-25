@@ -91,10 +91,10 @@ function generatePassword() {
       var randomNum = Math.floor(Math.random()*(25-0)+0);
       randomChar = upperChars[randomNum];
     } else if(charType=="number") {
-      var randomNum = Math.floor(Math.random()*(8-0)+0);
+      var randomNum = Math.floor(Math.random()*(9-0)+0);
       randomChar = nums[randomNum];
     } else if(charType=="special") {
-      var randomNum = Math.floor(Math.random()*(25-0)+0);
+      var randomNum = Math.floor(Math.random()*(7-0)+0);
       randomChar = specialChars[randomNum];//create the functions in order to choose a random character from the arrays above
     }
 
